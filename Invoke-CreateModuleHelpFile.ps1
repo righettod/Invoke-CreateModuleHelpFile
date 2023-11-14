@@ -275,12 +275,6 @@
     </div><!-- /.container -->
 "@
         $html += @'
-    <script>$('body').scrollspy({ target: '.sidebar-nav' })</script>
-    <script>
-      $('[data-spy="scroll"]').on("load", function () {
-        //var $spy = $(this).scrollspy('refresh')
-    })
-    </script>
   </body>
 </html>
 '@
