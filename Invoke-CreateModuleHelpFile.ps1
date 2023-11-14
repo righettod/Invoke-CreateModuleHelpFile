@@ -30,7 +30,7 @@
 
         # Skip dependency check.
         [Parameter()]
-        [switch] $SkipDependencyCheck = $false
+        [switch] $SkipDependencyCheck = $true
     )
 
     # jquery filename - remember to update if you update jquery to a newer version
@@ -40,19 +40,6 @@
     $dependencies = @('bootstrap.min.css','jasny-bootstrap.min.css','navmenu.css',$jqueryFileName,'bootstrap.min.js','jasny-bootstrap.min.js')
 
     try {
-        # check dependencies
-        if (-not($SkipDependencyCheck)) {
-            $missingDependency = $false
-            foreach($dependency in $dependencies) {
-                if(-not(Test-Path -Path ".\$($dependency)")) {
-                    Write-Warning "Missing: $($dependency)"
-                    $missingDependency = $true
-                }
-            }
-            if($missingDependency) { break }
-            Write-Verbose 'Dependency check OK'
-        }
-
         # add System.Web - used for html encoding
         Add-Type -AssemblyName System.Web
 
